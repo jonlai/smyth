@@ -1,22 +1,35 @@
-# smyth.vim
-Smyth is a true color (24-bit) Vim/Neovim color scheme, with fallback colors for 256-color mode (8-bit). It is inspired by the [Smyck](http://color.smyck.org/) color scheme.
+# smyth
+Smyth is a truecolor (24-bit) color scheme, with fallback support for 256-color mode (8-bit) in (Neo)Vim. It is inspired by the [Smyck](http://color.smyck.org/) color scheme.
 
-Smyth also provides color support for [ALE](https://github.com/dense-analysis/ale), [vim-lsp](https://github.com/prabirshrestha/vim-lsp), [vim-gitgutter](https://github.com/airblade/vim-gitgutter), [vim-signify](https://github.com/mhinz/vim-signify), and various language packs included via [vim-polyglot](https://github.com/sheerun/vim-polyglot).
+Smyth also provides color support for:
+* [macOS Terminal](https://support.apple.com/en-za/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)
+* [iTerm](https://iterm2.com/)
+* [ALE](https://github.com/dense-analysis/ale)
+* [lightline.vim](https://github.com/itchyny/lightline.vim)
+* [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+* [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+* [vim-signify](https://github.com/mhinz/vim-signify)
+* various language packs included via [vim-polyglot](https://github.com/sheerun/vim-polyglot).
 
 ## Colors
 <p align="center">
-    <img src="https://raw.github.com/jonlai/smyth.vim/images/colors.png">
+    <img src="https://raw.github.com/jonlai/smyth/images/colors.png">
 </p>
 
 ## Installation
 First and foremost, install Smyth with your preferred plugin manager; simply follow the plugin installation steps of your chosen manager. I use [vim-plug](https://github.com/junegunn/vim-plug), whose steps are:
-1. Add `Plug 'jonlai/smyth.vim` to your .vimrc
+1. Add `Plug 'jonlai/smyth'` to your .vimrc
 2. Call `:PlugInstall`
 
 After installation, you can enable the Smyth color scheme by adding the following lines to your .vimrc:
 ```vim
 syntax on
 colorscheme smyth
+```
+
+To use the accompanying [lightline](https://github.com/itchyny/lightline.vim) theme, set `smyth` as your color scheme in lightline's configuration:
+```vim
+let g:lightline = { 'colorscheme': 'smyth' }
 ```
 
 By default, Smyth defines its highlight groups with native terminal colors (0-15) and `gui` attributes. Either option can be used to display Smyth properly, and a 256-color mode with similar fallback colors is also supported. More details about each approach are listed below.
@@ -64,16 +77,16 @@ If you want to change a highlight group's look, you can use Smyth's highlight fu
 ```
 smyth#hi(<str>item, <str>fg, <str>bg, <str>attr)
 ```
-where `item` is the name of the highlight group, `fg`/`bg` are the Smyth colors to be used for the foreground/background, and `attr` are the font attributes. `fg` and `bg` use four-character strings to represent a color, e.g. `'lred'`, `'dmgt'`, `'lcyn'`, `'dwht'`. A complete list can be found in [`autoload/smyth.vim`](https://github.com/jonlai/smyth.vim/blob/master/autoload/smyth.vim). An empty string for `fg`, `bg`, and `attr` is replaced with a `NONE` value. Example usage can be found in  [`colors/smyth.vim`](https://github.com/jonlai/smyth.vim/blob/master/colors/smyth.vim).
+where `item` is the name of the highlight group, `fg`/`bg` are the Smyth colors to be used for the foreground/background, and `attr` are the font attributes. `fg` and `bg` use four-character strings to represent a color, e.g. `'lred'`, `'dmgt'`, `'lcyn'`, `'dwht'`. A complete list can be found in [`autoload/smyth.vim`](https://github.com/jonlai/smyth/blob/master/autoload/smyth.vim). An empty string for `fg`, `bg`, and `attr` is replaced with a `NONE` value. Example usage can be found in  [`colors/smyth.vim`](https://github.com/jonlai/smyth/blob/master/colors/smyth.vim).
 
 Overrides for a highlight group must come after the `colorscheme smyth` line in order to take effect.
 
 ## Screenshots
 **JavaScript:**  
-![JavaScript example of Smyth color scheme](https://raw.github.com/jonlai/smyth.vim/images/examples/js.png)
+![JavaScript example of Smyth color scheme](https://raw.github.com/jonlai/smyth/images/examples/js.png)
 
 **Python:**  
-![Python example of Smyth color scheme](https://raw.github.com/jonlai/smyth.vim/images/examples/py.png)
+![Python example of Smyth color scheme](https://raw.github.com/jonlai/smyth/images/examples/py.png)
 
 **Rust:**  
-![Rust example of Smyth color scheme](https://raw.github.com/jonlai/smyth.vim/images/examples/rs.png)
+![Rust example of Smyth color scheme](https://raw.github.com/jonlai/smyth/images/examples/rs.png)

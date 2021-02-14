@@ -24,15 +24,32 @@ let s:xtermcolor = {
 
 let s:termcolor = get(g:, 'smyth_termcolor', 0) ? s:xtermcolor : s:nativecolor
 
+fu! smyth#lightlineColorGroups()
+  let l:gc = s:guicolor
+  let l:tc = s:termcolor
+  return {
+  \ 'dblk': [l:gc.dblk, l:tc.dblk], 'lblk': [l:gc.lblk, l:tc.lblk],
+  \ 'dblu': [l:gc.dblu, l:tc.dblu], 'lblu': [l:gc.lblu, l:tc.lblu],
+  \ 'dred': [l:gc.dred, l:tc.dred], 'lred': [l:gc.lred, l:tc.lred],
+  \ 'dmgt': [l:gc.dmgt, l:tc.dmgt], 'lmgt': [l:gc.lmgt, l:tc.lmgt],
+  \ 'dgrn': [l:gc.dgrn, l:tc.dgrn], 'lgrn': [l:gc.lgrn, l:tc.lgrn],
+  \ 'dcyn': [l:gc.dcyn, l:tc.dcyn], 'lcyn': [l:gc.lcyn, l:tc.lcyn],
+  \ 'dylw': [l:gc.dylw, l:tc.dylw], 'lylw': [l:gc.lylw, l:tc.lylw],
+  \ 'dwht': [l:gc.dwht, l:tc.dwht], 'lwht': [l:gc.lwht, l:tc.lwht],
+  \ 'bgnd': [l:gc.bgnd, l:tc.bgnd], 'abgd': [l:gc.abgd, l:tc.abgd],
+  \ 'fgnd': [l:gc.fgnd, l:tc.fgnd], 'afgd': [l:gc.afgd, l:tc.afgd],
+  \}
+endfu
+
 fu! smyth#hi(item, fg, bg, ...)
-  let ctermfg = get(s:termcolor, a:fg, 'NONE')
-  let ctermbg = get(s:termcolor, a:bg, 'NONE')
-  let guifg = get(s:guicolor, a:fg, 'NONE')
-  let guibg = get(s:guicolor, a:bg, 'NONE')
-  let attr = get(a:, 1, 'NONE')
+  let l:ctermfg = get(s:termcolor, a:fg, 'NONE')
+  let l:ctermbg = get(s:termcolor, a:bg, 'NONE')
+  let l:guifg = get(s:guicolor, a:fg, 'NONE')
+  let l:guibg = get(s:guicolor, a:bg, 'NONE')
+  let l:attr = get(a:, 1, 'NONE')
 
   exe printf(
   \ "hi %s term=%s ctermfg=%s ctermbg=%s cterm=%s guifg=%s guibg=%s gui=%s",
-  \ a:item,   attr,   ctermfg,   ctermbg,    attr,   guifg,   guibg,  attr
+  \ a:item, l:attr, l:ctermfg, l:ctermbg, l:attr, l:guifg, l:guibg, l:attr
   \)
 endfu
