@@ -1,0 +1,60 @@
+diff --git a/sample-code/javascript.js b/sample-code/javascript.js
+index 9494006..f68e70c 100644
+--- a/sample-code/javascript.js
++++ b/sample-code/javascript.js
+@@ -6,7 +6,6 @@ const fs = require("fs");
+ const http = require("http");
+ const path = require("path");
+ const url = require("url");
+-const { inspect: stringify } = require("util");
+ 
+ const HTTP_OK = 200;
+ const HTTP_NOT_FOUND = 404;
+@@ -42,11 +41,10 @@ const writeToStorage = query => {
+   return "Success.\n" + stringify(receipts);
+ };
+ 
++const { inspect: stringify } = require("util");
++
+ /**
+- * Retrieve all values for the key names passed from the query, if set. Unset
+- * keys have a "n/a" value.
+  * @param {Object} query - a request's query (must contain a "key" property)
+- * @param {string} query.key - a comma-delimited list of keys to retrieve
+  * @returns {string} values of the specified keys, to be sent back as a response
+  */
+ const readFromStorage = query => {
+@@ -58,15 +56,6 @@ const readFromStorage = query => {
+   return stringify(values);
+ };
+ 
+-/**
+- * Assign the appropriate codes/headers for a response and write the data. The
+- * caller will still need to handle calling `response.end`.
+- * @param {ServerResponse} res - a response object from Node's HTTP library
+- * @param {number} code - the HTTP status code for the response
+- * @param {string} type - the content type header for the response data
+- * @param {string|Buffer} data - the data to send as the response
+- * @returns {ServerResponse} the same response passed in, for optional chaining
+- */
+ const writeResponse = (res, code, type, data) => {
+   if (!Buffer.isBuffer(data) && typeof data !== "string") {
+     const err = new Error(`Cannot send data type "${typeof data}" as response`);
+diff --git a/sample-code/python.py b/sample-code/python.py
+index 45347b9..881e6eb 100644
+--- a/sample-code/python.py
++++ b/sample-code/python.py
+@@ -16,12 +16,8 @@ class Source(Base):
+     def __init__(self, vim: Nvim) -> None:
+         super().__init__(vim)
+ 
+-        self.name = 'buffer'
+-        self.mark = '[B]'
+         self.events = ['Init', 'BufReadPost', 'BufWritePost', 'InsertLeave']
+-        self.vars = {
+-            'require_same_filetype': True,
+-        }
++        self.vars = { 'require_same_filetype': True }
+ 
+         self._limit = 1000000
+         self._buffers: typing.Dict[int, typing.Any] = {}
