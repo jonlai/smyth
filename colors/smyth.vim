@@ -7,76 +7,115 @@ set t_Co=256
 set background=dark
 let g:colors_name = "smyth"
 
-" https://github.com/vim/vim/tree/v8.2.0/runtime/doc/syntax.txt#L210
-call smyth#hi('Comment',      'lblk',   '')
-call smyth#hi('Constant',     'dred',   '')
-call smyth#hi('Delimiter',    'lwht',   '')
-call smyth#hi('Error',        'dblk', 'lred')
-call smyth#hi('Identifier',   'dblu',   '')
-call smyth#hi('Ignore',       'bgnd', 'bgnd')
-call smyth#hi('Macro',        'dcyn',   '')
-call smyth#hi('PreProc',      'dmgt',   '')
-call smyth#hi('Special',      'dcyn',   '')
-call smyth#hi('Statement',    'dgrn',   '')
-call smyth#hi('StorageClass', 'dred',   '')
-call smyth#hi('String',       'dylw',   '')
-call smyth#hi('Todo',         'dblk', 'lylw')
-call smyth#hi('Type',         'dblu',   '')
-call smyth#hi('Underlined',   'lblu',   '',   'underline')
-highlight link Boolean        Constant
+" syntax groups
+" https://neovim.io/doc/user/syntax/#group-name
+" https://github.com/vim/vim/blob/v9.2.0/runtime/doc/syntax.txt#L210
+" ==========
+call smyth#hi('Comment',      'lblk', '')
+
+call smyth#hi('Constant',     'dred', '')
+call smyth#hi('String',       'dylw', '')
 highlight link Character      String
-highlight link Conditional    Statement
-highlight link Debug          Special
-highlight link Define         Macro
-highlight link Exception      Statement
-highlight link Float          Constant
-highlight link Function       Identifier
-highlight link Include        PreProc
-highlight link Kayword        Statement
-highlight link Label          Statement
 highlight link Number         Constant
-highlight link Operator       Statement
-highlight link PreCondit      PreProc
+highlight link Boolean        Constant
+highlight link Float          Constant
+
+call smyth#hi('Identifier',   'dblu', '')
+call smyth#hi('Function',     'dmgt', '')
+
+call smyth#hi('Statement',    'dgrn', '')
+highlight link Conditional    Statement
 highlight link Repeat         Statement
-highlight link SpecialChar    Special
-highlight link SpecialComment Special
+highlight link Label          Statement
+highlight link Operator       Statement
+highlight link Keyword        Statement
+highlight link Exception      Statement
+
+call smyth#hi('PreProc',      'dred', '')
+highlight link Include        PreProc
+call smyth#hi('Define',       'dcyn', '')
+highlight link Macro          Define
+highlight link PreCondit      PreProc
+
+call smyth#hi('Type',         'dblu', '')
 highlight link StorageClass   Type
 highlight link Structure      Type
-highlight link Tag            Special
 highlight link Typedef        Type
 
-" https://github.com/vim/vim/tree/v8.2.0/runtime/doc/syntax.txt#L5055
-call smyth#hi('ColorColumn',        '',   'abgd')
+call smyth#hi('Special',      'dcyn', '')
+highlight link SpecialChar    Special
+highlight link Tag            Special
+call smyth#hi('Delimiter',    'lwht', '')
+highlight link SpecialComment Special
+highlight link Debug          Special
+
+call smyth#hi('Underlined',   'lblu', '',     'underline')
+highlight link Dimmed         Comment
+
+call smyth#hi('Ignore',       'bgnd', 'bgnd')
+
+call smyth#hi('Error',        'dblk', 'lred')
+
+call smyth#hi('Todo',         'dblk', 'lylw')
+
+call smyth#hi('Added',        'dblk', 'dgrn')
+call smyth#hi('Changed',      'dblk', 'dblu')
+call smyth#hi('Removed',      'dblk', 'dred')
+
+" highlight groups
+" https://neovim.io/doc/user/syntax/#highlight-groups
+" https://github.com/vim/vim/blob/v9.2.0/runtime/doc/syntax.txt#L5938
+" ----------
+call smyth#hi('ColorColumn',      '',     'abgd')
 call smyth#hi('Conceal',          'lwht', 'bgnd')
+highlight link CurSearch          IncSearch
 call smyth#hi('Cursor',           'dblk', 'lwht')
-call smyth#hi('CursorColumn',       '',     '')
-call smyth#hi('CursorLine',         '',     '')
-call smyth#hi('CursorLineNr',     'dwht',   '',   'bold')
-call smyth#hi('DiffAdd',          'dblk', 'dgrn')
-call smyth#hi('DiffChange',       'dblk', 'dblu')
-call smyth#hi('DiffDelete',       'dblk', 'dred')
+highlight link lCursor            Cursor
+highlight link CursorIM           Cursor
+call smyth#hi('CursorColumn',     '',     '')
+call smyth#hi('CursorLine',       '',     '')
+call smyth#hi('Directory',        'dcyn', '')
+highlight link DiffAdd            Added
+highlight link DiffChange         Changed
+highlight link DiffDelete         Removed
 call smyth#hi('DiffText',         'dblk', 'dylw')
-call smyth#hi('Directory',        'dcyn',   '')
-call smyth#hi('ErrorMsg',         'dred',   '',   'underline')
+highlight link DiffTextAdd        DiffText
+highlight link EndOfBuffer        NonText
+highlight link TermCursor         Cursor
+call smyth#hi('OkMsg',            'dgrn', '')
+call smyth#hi('WarningMsg',       'dylw', '',     'underline')
+call smyth#hi('ErrorMsg',         'dred', '',     'underline')
+highlight link StderrMsg          ErrorMsg
+highlight link StdoutMsg          MoreMsg
+call smyth#hi('VertSplit',        'dblk', 'lblk')
+highlight link WinSeparator       VertSplit
 call smyth#hi('Folded',           'dcyn', 'abgd')
 call smyth#hi('FoldColumn',       'dcyn', 'bgnd')
+call smyth#hi('SignColumn',       '',     '')
 call smyth#hi('IncSearch',        'dblk', 'lmgt')
+highlight link Substitute         IncSearch
 call smyth#hi('LineNr',           'lblk', 'bgnd')
 call smyth#hi('LineNrAbove',      'lblk', 'bgnd')
 call smyth#hi('LineNrBelow',      'lblk', 'bgnd')
+call smyth#hi('CursorLineNr',     'dwht', '',     'bold')
+highlight link CursorLineFold     FoldColumn
+highlight link CursorLineSign     SignColumn
 call smyth#hi('MatchParen',       'lwht', 'dcyn')
-call smyth#hi('ModeMsg',          'dmgt',   '',   'bold')
-call smyth#hi('MoreMsg',          'dmgt',   '')
-call smyth#hi('NonText',          'lblk',   '')
+highlight link MessageWindow      WarningMsg
+call smyth#hi('ModeMsg',          'dmgt', '',     'bold')
+highlight link MsgArea            Normal
+highlight link MsgSeparator       WinSeparator
+call smyth#hi('MoreMsg',          'dmgt', '')
+call smyth#hi('NonText',          'lblk', '')
 call smyth#hi('Normal',           'lwht', 'bgnd')
-call smyth#hi('Pmenu',            'lwht', 'lblk')
-call smyth#hi('PmenuSel',         'dblk', 'lmgt')
-call smyth#hi('PmenuSbar',        'dwht', 'dwht')
-call smyth#hi('PmenuThumb',       'lwht', 'lwht')
-call smyth#hi('Question',         'dgrn',   '',   'underline')
+highlight link ComplMatchIns      IncSearch
+highlight link PreInsert          Comment
+highlight link ComplHint          Comment
+highlight link ComplHintMore      Comment
+call smyth#hi('Question',         'dgrn', '',     'underline')
+highlight link QuickFixLine       Visual
 call smyth#hi('Search',           'dblk', 'lcyn')
-call smyth#hi('SignColumn',         '',     '')
-call smyth#hi('SpecialKey',       'lblk',   '')
+call smyth#hi('SpecialKey',       'lblk', '')
 call smyth#hi('SpellBad',         'dblk', 'dred')
 call smyth#hi('SpellCap',         'dblk', 'dblu')
 call smyth#hi('SpellLocal',       'dblk', 'dylw')
@@ -88,63 +127,64 @@ call smyth#hi('StatusLineTermNC', 'dwht', 'abgd')
 call smyth#hi('TabLine',          'lwht', 'lblk')
 call smyth#hi('TabLineFill',      'dwht', 'abgd')
 call smyth#hi('TabLineSel',       'dblk', 'lmgt')
-call smyth#hi('ToolbarButton',    'lwht', 'lblk', 'bold')
-call smyth#hi('ToolbarLine',      'abgd', 'abgd')
-call smyth#hi('Title',            'dblu',   '',   'bold')
-call smyth#hi('VertSplit',        'dblk', 'lblk')
+call smyth#hi('Title',            'dblu', '',     'bold')
 call smyth#hi('Visual',           'lblk', 'lwht')
 call smyth#hi('VisualNOS',        'lblk', 'lwht')
-call smyth#hi('WarningMsg',       'dylw',   '',   'underline')
+highlight link Whitespace         SpecialKey
 call smyth#hi('WildMenu',         'dblk', 'lmgt')
 
+" vim/neovim GUI components
+" ----------
+highlight link NormalFloat          Pmenu
+highlight link FloatBorder          WinSeparator
+highlight link FloatShadow          PmenuShadow
+highlight link FloatShadowThrough   FloatShadow
+highlight link FloatTitle           Title
+highlight link FloatFooter          Title
+highlight link NormalNC             Normal
+call smyth#hi('Pmenu',              'lwht', 'lblk')
+call smyth#hi('PmenuSel',           'dblk', 'dmgt')
+highlight link PmenuKind            Pmenu
+highlight link PmenuKindSel         PmenuSel
+highlight link PmenuExtra           Pmenu
+highlight link PmenuExtraSel        PmenuSel
+call smyth#hi('PmenuSbar',          'dwht', 'dwht')
+call smyth#hi('PmenuThumb',         'lwht', 'lwht')
+call smyth#hi('PmenuMatch',         'lwht', 'lblk', 'bold')
+call smyth#hi('PmenuMatchSel',      'dblk', 'lmgt', 'bold')
+highlight link PmenuBorder          Pmenu
+call smyth#hi('PmenuShadow',        '',     'abgd')
+highlight link PmenuShadowThrough   PmenuShadow
+highlight link PopupNotification    WarningMsg
+highlight link PopupSelected        PmenuSel
+highlight link TitleBar             StatusLine
+highlight link TitleBarNC           StatusLineNC
+highlight link WinBar               StatusLine
+highlight link WinBarNC             StatusLineNC
+highlight link SnippetTabstop       Pmenu
+highlight link SnippetTabstopActive PmenuSel
+
+" vim/neovim diagnostics
+" ----------
+call smyth#hi('DiagnosticError', 'dred', 'bgnd')
+call smyth#hi('DiagnosticWarn',  'dylw', 'bgnd')
+call smyth#hi('DiagnosticInfo',  'dcyn', 'bgnd')
+call smyth#hi('DiagnosticHint',  'dblu', 'bgnd')
+call smyth#hi('DiagnosticOk',    'dgrn', 'bgnd')
 
 " https://github.com/prabirshrestha/vim-lsp/tree/master
-call smyth#hi('LspErrorText',            'dred', 'bgnd')
-call smyth#hi('LspErrorHighlight',       'bgnd', 'dred', 'bold')
-call smyth#hi('LspHintText',             'dgrn', 'bgnd')
-call smyth#hi('LspHintHighlight',        'bgnd', 'dgrn', 'bold')
-call smyth#hi('LspInformationText',      'dblu', 'bgnd')
-call smyth#hi('LspInformationHighlight', 'bgnd', 'dblu', 'bold')
-call smyth#hi('LspWarningText',          'dylw', 'bgnd')
-call smyth#hi('LspWarningHighlight',     'bgnd', 'dylw', 'bold')
+highlight link LspErrorText       DiagnosticError
+highlight link LspWarningText     DiagnosticWarn
+highlight link LspInformationText DiagnosticInfo
+highlight link LspHintText        DiagnosticHint
 
 " https://github.com/dense-analysis/ale/tree/v2.6.0
-highlight link ALEErrorSign        LspErrorText
-highlight link ALEStyleErrorSign   LspErrorText
-highlight link ALEStyleWarningSign LspWarningText
-highlight link ALEWarningSign      LspWarningText
-
-" https://github.com/pangloss/vim-javascript/tree/master
-call smyth#hi('jsDocParam',                 'dwht',   '')
-highlight link jsObjectProp                 Special
-highlight link jsDestructuringAssignment    Special
-highlight link jsDocTags                    Statement
-highlight link jsExceptions                 PreProc
-highlight link jsGlobalNodeObjects          PreProc
-highlight link jsGlobalObjects              PreProc
-highlight link jsOperatorKeyword            Constant
-highlight link jsNull                       Constant
-highlight link jsStorageClass               Statement
-highlight link jsTemplateBraces             Special
-highlight link jsThis                       PreProc
-highlight link jsUndefined                  Constant
-
-" https://github.com/rust-lang/rust.vim/tree/master
-highlight link rustAssert                   Macro
-highlight link rustCommentLineDoc           Comment
-highlight link rustPanic                    Macro
-
-" https://github.com/StanAngeloff/php.vim/tree/master
-highlight link phpClasses                 PreProc
-highlight link phpParent                  Delimiter
-highlight link phpType                    Special
+highlight link ALEErrorSign        DiagnosticError
+highlight link ALEStyleErrorSign   DiagnosticError
+highlight link ALEStyleWarningSign DiagnosticWarn
+highlight link ALEWarningSign      DiagnosticWarn
 
 " https://github.com/airblade/vim-gitgutter/tree/master
 call smyth#hi('GitGutterAdd',    'dgrn', 'bgnd')
 call smyth#hi('GitGutterChange', 'dylw', 'bgnd')
 call smyth#hi('GitGutterDelete', 'dred', 'bgnd')
-
-" https://github.com/mhinz/vim-signify/tree/master
-highlight link SignifySignAdd    GitGutterAdd
-highlight link SignifySignChange GitGutterChange
-highlight link SignifySignDelete GitGutterDelete

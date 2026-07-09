@@ -6,10 +6,9 @@ Smyth also provides color support for:
 * [iTerm](https://iterm2.com/)
 * [ALE](https://github.com/dense-analysis/ale)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
+* [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-* [vim-signify](https://github.com/mhinz/vim-signify)
-* various language packs included via [vim-polyglot](https://github.com/sheerun/vim-polyglot).
 
 ## Colors
 <p align="center">
@@ -30,6 +29,13 @@ colorscheme smyth
 To use the accompanying [lightline](https://github.com/itchyny/lightline.vim) theme, set `smyth` as your color scheme in lightline's configuration:
 ```vim
 let g:lightline = { 'colorscheme': 'smyth' }
+```
+
+To use the accompanying [lualine](https://github.com/nvim-lualine/lualine.nvim) theme, set `smyth` as your theme in lualine's configuration:
+```lua
+require('lualine').setup {
+  options = { theme = 'smyth' }
+}
 ```
 
 By default, Smyth defines its highlight groups with native terminal colors (0-15) and `gui` attributes. Either option can be used to display Smyth properly, and a 256-color mode with similar fallback colors is also supported. More details about each approach are listed below.
